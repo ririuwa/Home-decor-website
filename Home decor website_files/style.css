@@ -1,1 +1,631 @@
+/*===== GOOGLE FONTS ====*/
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,900&display=swap");
+
+/*===== BASE ====*/
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 3.5rem 0 0 0;
+    background-color: #f9f5f0;
+    font-family: 'lato', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #333;
+}
+
+h1, h2, h3{
+    font-family:  'Cinzel', serif;
+    color: #2c2c2c;
+}
+
+h1{
+    font-size: 1.5rem;
+}
+
+h2{
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+h3{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+p{
+    font-size: 1rem;
+    line-height: 1.6;
+}
+ul{
+    list-style: none;
+    padding: 0;
+} 
+
+a{
+    text-decoration: none;
+    color: #212121;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+/*=========== REUSABLE CSS CLASSES =========*/
+.container {
+    max-width: 1120px;
+    display: grid;
+    grid-template-columns: 100%;
+    column-gap: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    width: calc(100% - 2rem);
+}
+
+.section{
+    padding: 5rem 0 2rem;
+    text-align: center;
+}
+
+.section-title{
+    position: relative;
+    font-size: 1.5rem;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: .1rem;
+}
+
+.section-title::after{
+    content: '';
+    position: absolute;
+    width: 56px;
+    height: .18rem;
+    bottom: -1rem;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: #212121;
+}
+.main{
+    overflow: hidden;
+}
+
+/*=========== HEADER & NAV =========*/
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.nav{
+   height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo{
+ color: #d4a373;
+font-weight: 700;  
+font-family: 'Cinzel', serif;
+}
+
+@media screen and (max-width: 768px){
+    .nav-menu,
+    .btn-class{
+        position: fixed;
+        top: 3.5rem;
+        left: -100%;
+        width:  70%;
+        height: 100vh;
+        padding: 2rem;
+        background-color: transparent;
+        transition: .5s;
+    }
+}
+.nav-items{
+    display: inline-flex;
+    margin-left: 1rem;  
+}
+
+.nav-list{
+    margin-left: 2rem;
+}
+
+.nav-link{
+    color: #2c2c2c;
+    font-weight: 400;
+    transition: color 0.3 ease;
+}
+
+.nav-link:hover{
+   color: #d4a373; 
+}
+
+.burger{
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/*=========== HOME =========*/
+.carousel{
+    position: relative;
+    height: 100vh;
+}
+
+.carousel-slide{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+
+.carousel-slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-slide.active{
+    opacity: 1;
+}
+.carousel-caption{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-caption h1{
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.carousel-caption p{
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+.cta{
+    padding: 0.8rem 2rem;
+    background: #d4a373;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: .813rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.cta:hover{
+    background: #b88e5f;
+}
+
+.carousel-prev,
+.carousel-next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.carousel-prev{
+    left: 1rem;
+}
+
+.carousel-next{
+    right: 1rem;
+}
+
+/*=========== MOOD SELECTOR =========*/
+.mood-selector{
+   padding: 4rem 2rem;
+    text-align: center;
+    background: #e8e1d9;
+}
+
+.mood-options{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.mood-card{
+   width: 250px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mood-card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.mood-card h3{
+    margin-top: 1rem;
+}
+
+.mood-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/*=========== CURATED GALLERY =========*/
+.gallery{
+    padding: 4rem 2rem;
+    text-align: center;
+}
+.gallery-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+        }
+
+.gallery-item{
+    overflow: hidden;
+    border-radius: 10px;
+}
+.gallery-item img{
+     width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover{
+    transform: scale(1.1);
+}
+
+/*=========== COLLECTION =========*/
+.collection{
+    padding: 4rem 2rem;
+    background: #F9F5F0;
+    text-align: center;
+}
+
+.collection-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.collection-card{
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.collection-card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.collection-card:hover{
+    transform: translateY(-10px);
+}
+/*=========== Artisan spotlight=========*/
+.artisan{
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.artisan-slider{
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding-bottom: 1rem;
+}
+
+.artisan-card{
+    min-width: 300px;
+    background: #fff;
+    padding: 1rem;
+ border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.artisan-card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/*=========== DESIGN PLAYGROUND =========*/
+.playground{
+    padding: 4rem 2rem;
+    text-align: center;
+    background: #e8e1d9;
+}
+
+#design-canvas{
+    border: 2px solid #d4a373;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.playground-controls{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+/*=========== STORIES IN TEXTURE=========*/
+.stories{
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.stories-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;  
+}
+
+.story-card{
+    background: #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.story-card img{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/*=========== FOOTER=========*/
+.footer{
+    padding: 4rem 2rem;
+    background: #2c2c2c;
+    color: #fff;
+    text-align: center;
+}
+
+.footer-content{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3{
+    font-size: 1.5ren;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.social-links a{
+    color: #d4a373;
+    margin:  0 1rem;
+    text-decoration: none;
+}
+
+.footer-section form{
+    display: flex;
+    gap: 1rem;
+}
+
+.footer-section input{
+  padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+}
+.footer-section button{
+    padding: 0.5rem 1rem;
+    background: #d4a373;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.footer-bottom{
+    font-size: 0.9rem;
+}
+/*=========== RESPONSIVE BREAKPOINTS =========*/
+@media screen and (max-width: 480px){
+    h1{
+        font-size: 2rem;
+    }
+    
+    h2{
+        font-size: 1.8rem;
+    }
+    
+    .nav{
+        flex-direction: column;
+    }
+    .nav-logo{
+        font-size: 1rem;
+    }
+    
+    .nav-items{
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-items:active{
+        display: flex;
+    }
+    .burger{
+        display: block;
+    }
+    
+    .carousel-caption p{
+        font-size: 1rem;
+    }
+    
+    .carousel-caption h1{
+        font-size: 2rem;
+    }
+   
+    .mood-options{
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .mood-card{
+        width: 100%;
+    }
+    
+    .gallery-grid,
+    .collection-grid,
+    stories-grid{
+        grid-template-columns: 1fr;
+        
+    }
+    #design-canvas{
+        width: 100%;
+        height: 200px;
+    }
+}
+
+/* Tablet (768px) */
+@media screen and (max-width: 768px){
+    .h1{
+        font-size: 2rem;
+    }
+    
+    .nav-items{
+        display: flex;
+    }
+    .nav-menu{
+        position: fixed;
+        top: 3.5rem;
+        left: -100%;
+        width:  70%;
+        height: 100vh;
+        padding: 2rem;
+        background-color: transparent;
+        transition: .5s;
+    }
+    
+    .burger{
+        display: none;
+    }
+    
+    .carousel-caption h1{
+        font-size: 3rem;
+    }
+    
+    .mood-options{
+        flex-wrap: wrap;
+    }
+    
+    .gallery-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .collection-grid{
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Desktop (1120px) */
+@media screen and (max-width: 1120px){
+    .header{
+        padding: 1rem 5rem;
+    }
+    .carousel-caption h1{
+        font-size: 4rem;
+    }
+    
+    .mood-options{
+        gap: 3rem;
+    }
+    
+    .gallery-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .collection-grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* 4K (2560px) */
+@media screen and (max-width: 2560px){
+    body{
+        font-size: 1rem;
+    }
+    
+    h1{
+        font-size: 2.5rem;
+    }
+    
+    h2{
+        font-size: 3.5rem;
+    }
+    
+    header{
+        padding: 1rem 10rem;
+    }
+    
+    .carousel-caption h1 { 
+        font-size: 6rem;
+    }
+    
+    carouel-caption p{
+        font-size: 2rem;
+    }
+    
+    .mood-card{
+        width: 400px;
+    }
+    
+    .gallery-grid{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .collection-grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    #design-canvas{
+        width: 1200px;
+        height: 600px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 
