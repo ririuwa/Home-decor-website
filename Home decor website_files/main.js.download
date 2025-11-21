@@ -1,0 +1,102 @@
+//Navigation Toggle fo Mobile
+const burger = document.querySelector('.burger');
+const navLinks = document.querySelector('.nav-items');
+
+burger.addEventListener('click', () => {
+    navItems.classList.toggle('active');
+});
+
+// Carousel
+const slides = document.querySelectorAll('.carousel-slide');
+const prevBtn = document.querySelector('.carousel-prev');
+const nextBtn = document.querySelector('.carousel-next');
+let currentSlide = 0;
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+    });
+    }
+
+prevBtn.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+});
+
+nextBtn.addEventListener('click', () =>{
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+});
+
+//Auto-slide every 5 seconds
+setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}, 5000);
+
+// Mood Selector 
+const moodcards = document.querySelectorAll('.mood-card');
+moodCards.forEach(card => {
+    card.addEventListener('click', () => { 
+        const mood = card.dataset.mood;
+        alert(`Selected mood: ${mood}`);
+        //Add logic to filter gallery based on mood
+    });
+});
+
+// Scroll Animatons
+const animateOnScroll = () => {
+    const elements = document.querySelectorAll('.mood-card, .gallery-item, .collection-card, .artisan-card, .story-card');
+    elements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.8) {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }
+    });
+};
+
+window.addEventListener('scroll', animateOnScroll);
+
+// Design Playground canvas
+const canvas = document.getElementById('design-canvas');
+const ctx = canvas.getContext('2d');
+const colorPicker = document.getElementById('color-picker');
+const clearBtn = document.getElementById('clear-canvas');
+
+let isDrawing = false;
+
+canvas.addEventListener('mousedown', () => isDrawing = true);
+canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mousemove', draw);
+
+function draw(e) {
+    if (!isDrawing) return;
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    ctx.fillStyle = colorPicker.value;
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+clearBtn.addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+
+//Initial animation setup
+document.querySelectorAll('.mood-card, .gallery-item, .collection-card, .artisan-card, .story-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(50px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+});
+
+
+
+
+
+
+
